@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title> Portfolio </title>
+    <link rel="stylesheet" type="text/css" href="portrait.css" media="screen and (orientation:portrait)"/>
+    <link rel="stylesheet" type="text/css" href="landscape.css" media="screen and (orientation:landscape)"/>
+    <link id="favicon-link" rel="icon" type="image/x-icon" href="">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+
+<script>
+    function makeFavicon() {
+
+        let canvas = document.createElement('canvas');
+        canvas.width = 16;
+        canvas.height = 16;
+
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#1F1F1F';
+        ctx.fillRect(0, 0, 16, 16);
+
+        let ctx2 = canvas.getContext("2d");
+        ctx2.fillStyle = '#E76D4B';
+        ctx2.font = "bold 10px Helvetica";
+        ctx2.fillText("JL", 2, 12);
+
+        let link = document.getElementById("favicon-link");
+        link.href = canvas.toDataURL("image/x-icon");
+
+    }
+
+    makeFavicon();
+</script>
+
+<body>
+
+    <div class="header">
+        <div class="content">
+            <p>Hi, my name is</p>
+            <h1>Jack Lafond</h1>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="#About" class="active">About</a>
+        <a href="#Experience">Experience</a>
+        <a href="#Projects">Projects</a>
+        <a href="#Contact">Contact</a>
+    </div>
+
+    <div class="main">
+        <div id="About" class="content">
+            <h2>About</h2>
+            <p>
+                This is a section about me ...
+            </p>
+        </div>
+
+        <div id="Experience" class="content">
+            <h2>Experience</h2>
+            <p>
+                This is a section about my experience ...
+            </p>
+        </div>
+
+        <div id="Projects" class="content">
+            <h2>Projects</h2>
+            <p>
+                This is a section about my projects ...
+            </p>
+        </div>
+
+        <div id="Contact" class="content">
+            <h2>Contact</h2>
+            <p>
+                This is a section about how to contact me ...
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
