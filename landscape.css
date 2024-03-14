@@ -38,11 +38,21 @@ body {
 }
 
 .nav a:hover {
-    border-bottom: 3px solid #E76D4B;
+    background:#363636;
 }
 
 .nav a.active {
-    border-bottom: 3px solid #E76D4B;
+    background:#E76D4B;
+}
+
+div.rect {
+    position: sticky;
+    top: 0;
+    left: 0px;
+    width:100px;
+    height:4px;
+    background-color: #E76D4B;
+    z-index:1;
 }
 
 .header {
@@ -78,7 +88,7 @@ body {
 }
 
 .main .content {
-    margin: 200px 300px;
+    margin: 150px 200px;
     padding-top: 50px;
 }
 
@@ -90,4 +100,50 @@ body {
 .main .content p {
     color:#1F1F1F;
     font-size: 25px;
+}
+
+footer {
+    border-top: solid 2px #07749C;
+    margin: 0px 100px 100px 100px;
+    text-align: center;
+}
+
+footer h2 {
+    color:#1F1F1F;
+    font-size: 40px;
+    margin: 20px 100px 40px;
+}
+
+footer #contact-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    background:#E0E0E0;
+}
+
+footer #contact-div * {
+    font-size: 20px;
+    color:#1F1F1F;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer #contact-div span {
+    text-decoration: underline;
+}
+
+footer #contact-div span:hover {
+    background-color: #1F1F1F;
+    color:#E0E0E0;
+}
+
+footer #contact-div a:hover {
+    color:#E0E0E0;
+}
+
+html {
+    scroll-behavior: smooth;
 }

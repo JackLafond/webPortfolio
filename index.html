@@ -9,6 +9,75 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 </head>
 
+<body>
+
+    <div class="header">
+        <div class="content">
+            <p>Hi, my name is</p>
+            <h1>Jack Lafond</h1>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="#About" class="navlink" id="leftnav">About</a>
+        <a href="#Skills" class="navlink">Skills</a>
+        <a href="#Experience" class="navlink">Experience</a>
+        <a href="#Projects" class="navlink">Projects</a>
+        <a href="#Contact" class="navlink">Contact</a>
+    </div>
+    <div class="rect"></div>
+
+    <div class="main">
+        <div id="About" class="content">
+            <h2>About</h2>
+            <p>
+                This is a section about me ...
+            </p>
+        </div>
+
+        <div id="Skills" class="content">
+            <h2>Skills</h2>
+            <p>
+                This is a section about my skills ...
+            </p>
+        </div>
+
+        <div id="Experience" class="content">
+            <h2>Experience</h2>
+            <p>
+                This is a section about my experience ...
+            </p>
+        </div>
+
+        <div id="Projects" class="content">
+            <h2>Projects</h2>
+            <p>
+                This is a section about my projects ...
+            </p>
+        </div>
+    </div>
+
+    <footer id="Contact">
+        <h2>Contact</h2>
+        <div id="contact-div">
+            <div id="linkedin-div">
+                <p>LinkedIn (Click to Nav):</p>
+                <span><a href="https://www.linkedin.com/in/jack-lafond-b34483251/">Linked In - Jack Lafond</a></span>
+            </div>
+            <div id="email-div">
+                <p>Contact (Click to Copy):</p>
+                <span id="email">jackwlafond@gmail.com</span>
+            </div>
+            <div id="github-div">
+                <p>Github (Click to Nav):</p>
+                <span><a href="https://github.com/JackLafond">Github - Jack Lafond</a></span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     function makeFavicon() {
 
@@ -30,54 +99,78 @@
 
     }
 
+    function updateNav() {
+
+        document.querySelectorAll(".nav a").forEach((link) =>
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                document.querySelectorAll(".nav a").forEach((link) => link.classList.remove("active"));
+                this.classList.add("active");
+                window.location.href = this.href;
+            })
+        );
+    }
+
+    function updateFooter() {
+        const span = document.getElementById("email");
+
+        span.onclick = function() {
+        document.execCommand("copy");
+        }
+
+        span.addEventListener("copy", function(event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+            event.clipboardData.setData("text/plain", span.textContent);
+            console.log("copied " + event.clipboardData.getData("text"))
+            alert("Copied Email to Clipboard: " + event.clipboardData.getData("text"))
+        }
+        });
+    }
+
+    function updateScroll() {
+        let links = document.querySelectorAll(".nav a");
+        let sections = document.querySelectorAll("section");
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY - 200;
+
+            links.forEach(link => {
+                let section = document.querySelector(link.hash);
+                if (section.offsetTop <= fromTop + 200 && section.offsetTop + section.offsetHeight > fromTop + 100) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        var start = $("div#About").offset().top;
+        var x = $('a#leftnav').offset().left;
+        var navWidth = 0;
+        var navAs = $('div.nav').find('a');
+        navAs.each(function() { navWidth += $(this).width(); });
+        console.log(navWidth);
+        var totalHeight = $('div.main').height();
+        var scale = navWidth/totalHeight;
+        console.log(scale);
+        $(".rect").css({
+            "left": x + "px",
+        });
+        window.addEventListener("scroll", event => {
+            var change = (window.scrollY - start) * scale;
+            if(change > 0) {
+                $(".rect").css({
+                    "transform": "translateX(" + change + "px)",
+                });
+            }
+        });
+    }
+
     makeFavicon();
+    updateNav();
+    updateFooter();
+    updateScroll();
+
 </script>
-
-<body>
-
-    <div class="header">
-        <div class="content">
-            <p>Hi, my name is</p>
-            <h1>Jack Lafond</h1>
-        </div>
-    </div>
-
-    <div class="nav">
-        <a href="#About" class="active">About</a>
-        <a href="#Experience">Experience</a>
-        <a href="#Projects">Projects</a>
-        <a href="#Contact">Contact</a>
-    </div>
-
-    <div class="main">
-        <div id="About" class="content">
-            <h2>About</h2>
-            <p>
-                This is a section about me ...
-            </p>
-        </div>
-
-        <div id="Experience" class="content">
-            <h2>Experience</h2>
-            <p>
-                This is a section about my experience ...
-            </p>
-        </div>
-
-        <div id="Projects" class="content">
-            <h2>Projects</h2>
-            <p>
-                This is a section about my projects ...
-            </p>
-        </div>
-
-        <div id="Contact" class="content">
-            <h2>Contact</h2>
-            <p>
-                This is a section about how to contact me ...
-            </p>
-        </div>
-    </div>
-
-</body>
 </html>
