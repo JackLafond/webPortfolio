@@ -31,15 +31,46 @@
         <div id="About" class="content">
             <h2>About</h2>
             <p>
-                This is a section about me ...
+                My name is Jack, I am based in Worcester, MA. I am pursuing a Bachelor's Degree in Data Science from Worcester Polytechnic Institute (WPI). I enjoy all things statistics, mathematics, and programming, and I strive to never stop learning new things. Thanks to my experiences at WPI and in professional settings, I thrive in team environments. 
+            </p><br>
+            <p>
+                Outside of that some of my hobbies include reading, hiking, and sports. I am an avid NFL fan!
             </p>
         </div>
 
         <div id="Skills" class="content">
             <h2>Skills</h2>
-            <p>
-                This is a section about my skills ...
-            </p>
+
+            <div id="list-container">
+                <div>
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                        <li>JavaScript</li>
+                        <li>R</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Development</h3>
+                    <ul>
+                        <li>GitHub</li>
+                        <li>Jira</li>
+                        <li>Agile Methodologies</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Data Analytics</h3>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Neural Networks</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div id="Experience" class="content">
@@ -129,15 +160,14 @@
     }
 
     function updateScroll() {
+
         let links = document.querySelectorAll(".nav a");
         let sections = document.querySelectorAll("section");
-
+ 
         window.addEventListener("scroll", event => {
-            let fromTop = window.scrollY - 200;
-
             links.forEach(link => {
                 let section = document.querySelector(link.hash);
-                if (section.offsetTop <= fromTop + 200 && section.offsetTop + section.offsetHeight > fromTop + 100) {
+                if (window.scrollY + 200 >= section.offsetTop && window.scrollY <= section.offsetTop + section.offsetHeight) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
@@ -150,18 +180,30 @@
         var navWidth = 0;
         var navAs = $('div.nav').find('a');
         navAs.each(function() { navWidth += $(this).width(); });
-        console.log(navWidth);
-        var totalHeight = $('div.main').height();
-        var scale = navWidth/totalHeight;
-        console.log(scale);
+
+        var contentHeight = $('div.main').height();
+        var scale = navWidth/contentHeight;
+
+        var wHeight = window.innerHeight;
+        var rectLength = navWidth * (wHeight/contentHeight);
+
         $(".rect").css({
             "left": x + "px",
         });
+
+        $(".rect").css({
+            "width": rectLength + "px",
+        });
+
         window.addEventListener("scroll", event => {
             var change = (window.scrollY - start) * scale;
             if(change > 0) {
                 $(".rect").css({
                     "transform": "translateX(" + change + "px)",
+                });
+            } else {
+                $(".rect").css({
+                    "transform": "translateX(0px)",
                 });
             }
         });
