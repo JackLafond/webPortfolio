@@ -83,40 +83,48 @@ div.rect {
 }
 
 .main .content {
-    margin-top: 50px;
+    margin-top: 200px;
     margin-bottom: 200px;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.main .content h2 {
-    display: inline-block;
+.main .content .column {
+    display: inline-flex;
+}
+
+.main .content .column#content {
+    margin-left: 25%;
+    vertical-align: text-top;
+}
+
+.main .content .column#header h2 {
+    margin-top: 50px;
     color:#1F1F1F;
     font-size: 40px;
     border-bottom: 2px solid #07749C;
     padding-bottom: 5px;
 }
 
-.main .content p {
+.main .content .column#content p {
     color:#1F1F1F;
     font-size: 25px;
     line-height: 1.4;
     margin: 0px 20px;
 }
 
-.main .content li {
+.main .content .column#content li {
     color:#1F1F1F;
     font-size: 25px;
     margin: 10px 0px;
 }
 
-.main .content ul {
+.main .content .column#content ul {
     padding-left: 20px;
     list-style-type: none;
 }
 
-.main .content h3 {
+.main .content .column#content h3 {
     color:#1F1F1F;
     font-size: 30px;
     margin-top: 0px;
