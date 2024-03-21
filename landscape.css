@@ -21,12 +21,12 @@ body {
     top: 0;
     background-color: #1F1F1F;
     overflow: hidden;
-    text-align: center;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .nav a {
-    display: inline-block;
     list-style-type: none;
     color: #E0E0E0;
     text-align: center;
@@ -57,16 +57,18 @@ div.rect {
 .header {
     overflow: hidden;
     background-color: #1F1F1F;
-    padding: 20px 10px;
+    display: flex;
+    margin: auto;
     justify-content: center;
     text-align: center;
 }
 
 .header .content {
-    margin-top: 200px;
-    margin-bottom: 200px;
-    display: inline-block;
+    display: flex;
+    margin: auto;
+    flex-direction:column;
     text-align: left;
+    justify-content: center;
 }
 
 .header p {
@@ -80,6 +82,26 @@ div.rect {
     color: #E0E0E0;
     font-size: 160px;
     margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.icons {
+    display: flex;
+    justify-content: right;
+}
+
+.fa-brands {
+    display: flex;
+    justify-content: right;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    color:#1F1F1F;
+    font-size: 50px;
+    text-decoration: none;
+    margin: 0px 15px;
+    padding: 5px 10px;
+    visibility: hidden;
+    display: none;
 }
 
 .main .content {

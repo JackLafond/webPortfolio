@@ -14,7 +14,13 @@
     <div class="header">
         <div class="content">
             <p>Hi, my name is</p>
-            <h1>Jack Lafond</h1>
+            <div class="name-and-icons">
+                <h1>Jack Lafond</h1>
+                <div class="icons">
+                    <a id="linkedin-icon" class="fa-brands fa-linkedin-in" href="https://www.linkedin.com/in/jack-lafond-b34483251/"></a>
+                    <a id="github-icon" class="fa-brands fa-github" href="https://github.com/JackLafond"></a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -106,6 +112,7 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script>
     function makeFavicon() {
 
@@ -205,7 +212,37 @@
         });
     }
 
+    function updateHeader() {
+        var wHeight = window.innerHeight;
+        var cHeight = $(".header .content").height();
+        var navHeight = $(".nav").height();
+        var scaled = (wHeight - cHeight - navHeight) * .50;
+        let hContent = $(".header .content");
+        let nameIconDiv = $(".header .content .name-and-icons");
+        let icons = $(".fa-brands");
+
+        hContent.css({
+            "margin-top": scaled + "px",
+            "margin-bottom": scaled + "px",
+        });
+
+        nameIconDiv.on("mouseover", event => {
+            icons.css({
+                "display": "block",
+                "visibility": "visible",
+            })
+        });
+
+        nameIconDiv.on("mouseout", event => {
+            icons.css({
+                "display": "none",
+                "visibility": "hidden",
+            })
+        });
+    }
+
     makeFavicon();
+    updateHeader();
     updateNav();
     updateFooter();
     updateScroll();
